@@ -17,8 +17,8 @@
     <bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://123.207.137.35:3306/plants_reco?characterEncoding=utf-8"></property>
-		<property name="username" value="bookstore_dev" /> 
-		<property name="password" value="hopeaccomplish" />
+		<property name="username" value="root" /> 
+		<property name="password" value="toor" />
 		<!-- 数据库连接池保持的最小连接数 -->
 		<property name="minIdle" value="1" />
 		<!-- 数据库连接池保持的最大连接数 --> 
