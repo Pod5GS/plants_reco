@@ -7,11 +7,8 @@
 <constant name="struts.multipart.maxSize" value="100000000" />
 <package name="hello" namespace="/" extends="struts-default,json-default">
 		<action name="upload" class="com.plants_reco.action.UploadAction" method="upload">
-			<result name="success" type="json">
-				<param name="root">result</param>
-			</result>
-			<result name="fail" type="json">
-			    <param name="root">result</param>
+			<result type="json">
+				<param name="root">plants</param>
 			</result>
 		</action>
 </package>

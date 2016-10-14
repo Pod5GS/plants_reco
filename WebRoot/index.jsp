@@ -52,6 +52,74 @@
 	background-repeat: no-repeat;
 	background-position: center bottom -2px;
 }
+.loader {
+  color: #752f90;
+  font-size: 90px;
+  text-indent: -9999em;
+  overflow: hidden;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  margin: 72px auto;
+  position: relative;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation: load6 1.7s infinite ease;
+  animation: load6 1.7s infinite ease;
+}
+@-webkit-keyframes load6 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
+@keyframes load6 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  5%,
+  95% {
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+  10%,
+  59% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.087em -0.825em 0 -0.42em, -0.173em -0.812em 0 -0.44em, -0.256em -0.789em 0 -0.46em, -0.297em -0.775em 0 -0.477em;
+  }
+  20% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.338em -0.758em 0 -0.42em, -0.555em -0.617em 0 -0.44em, -0.671em -0.488em 0 -0.46em, -0.749em -0.34em 0 -0.477em;
+  }
+  38% {
+    box-shadow: 0 -0.83em 0 -0.4em, -0.377em -0.74em 0 -0.42em, -0.645em -0.522em 0 -0.44em, -0.775em -0.297em 0 -0.46em, -0.82em -0.09em 0 -0.477em;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+    box-shadow: 0 -0.83em 0 -0.4em, 0 -0.83em 0 -0.42em, 0 -0.83em 0 -0.44em, 0 -0.83em 0 -0.46em, 0 -0.83em 0 -0.477em;
+  }
+}
 </style>
 </head>
 <body>
@@ -118,6 +186,12 @@
 			<div class="fh5co-spacer fh5co-spacer-md"></div>
 			<div class="fh5co-spacer fh5co-spacer-md"></div>
 		</div>
+		<div id="loadingarea" class="container" style="display:none">
+		    <div class="row" style="text-align:center">
+		         <div class="loader">Loading...</div>
+		         <h1>正在分析，请稍后</h1>
+		    </div>
+		</div>
 		<!-- END container -->
 		<div id="resultarea" class="container" style="display:none;">
 			<div
@@ -125,33 +199,19 @@
 				<h2 class="uline-title text-center">以下是机器识别的结果</h2>
 				<div class="fh5co-spacer fh5co-spacer-sm"></div>
 			</div>
-			<div class="row">
-				<div
-					class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box fadeInUp animated">
-					<figure>
-						<a onclick="showDetail()"><img class="img-responsive"
-							src="images/work_2.jpg" alt="Free HTML5 Template"></a>
-					</figure>
-					<h3 class="heading">太阳花</h3>
-					<p>准确率：83%</p>
-				</div>
-				<div style="margin-top:20px;">
-					<a class="col-md-8 col-sm-12 col-md-offset-2 col-xs-12 btn btn-primary"
-						onclick="showUpload()">鉴别其它的植物</a>
-				</div>
-			</div>
+			
 		</div>
 		<!-- END container -->
 		<div id="detailarea" class="container" style="display:none;">
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="item">
-						<img src="images/sample.jpg" class="img-responsive" alt="...">
+						<img id="detail_img" src="images/sample.jpg" class="img-responsive" alt="...">
 					</div>
 				</div>
 				<div class="col-sm-6">
 					<h3 class="second-child">
-						<span>太阳花</span>
+						<span id="detail_name"></span>
 					</h3>
 					<p>简介</p>
 					<br>
@@ -161,19 +221,24 @@
 					<table class="table">
 						<tbody>
 							<tr>
-								<td>纲</td>
-								<td></td>
-								<td>太阳花纲</td>
-							</tr>
-							<tr>
 								<td>科</td>
 								<td></td>
-								<td>向日葵科</td>
+								<td id="detail_class"></td>
+							</tr>
+							<tr>
+								<td>别名</td>
+								<td></td>
+								<td id="detail_oname"></td>
+							</tr>
+							<tr>
+								<td>拉丁名</td>
+								<td></td>
+								<td id="detail_fname"></td>
 							</tr>
 							<tr>
 								<td>常见地</td>
 								<td></td>
-								<td>罗姆楼</td>
+								<td id="detail_address"></td>
 							</tr>
 						</tbody>
 					</table>
@@ -255,10 +320,23 @@
 		function showResult() {
 			$('#uploadarea').attr('style', 'display:none;');
 			$('#detailarea').attr('style', 'display:none;');
+			$('#loadingarea').attr('style','display:none;');
 			$('#resultarea').attr('style', '');
 		}
 		//显示详情模块
-		function showDetail(){
+		function showDetail(e){
+		    var plant_image = $(e.target).attr("src");
+			var plant_name = $(e.target).attr("plant_name");
+			var other_name = $(e.target).attr("other_name");
+			var formal_name = $(e.target).attr("formal_name");
+			var plant_class = $(e.target).attr("plant_class");
+			var plant_address = $(e.target).attr("plant_address");
+			$('#detail_img').attr("src",plant_image);
+			$('#detail_name').html(plant_name);
+			$('#detail_class').html(plant_class);
+			$('#detail_oname').html(other_name);
+			$('#detail_fname').html(formal_name);
+			$('#detail_address').html(plant_address);
 		    $('#resultarea').attr('style', 'display:none;');
 			$('#detailarea').attr('style', '');
 		}
@@ -279,6 +357,8 @@
 							myDropzone = this; // closure
 							submitButton.addEventListener("click", function() {
 								myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+								$('#uploadarea').attr('style', 'display:none;');
+								$('#loadingarea').attr('style','');
 							});
 							//超出文件个数限制的事件
 							this.on("maxfilesexceeded", function(file) {
@@ -311,6 +391,31 @@
 									uploadflag = false;
 								} else {
 									uploadflag = true;
+									$('#resultarea').empty();
+									$('#resultarea').append('<div class="col-md-8 col-md-offset-2 text-center fh5co-section-heading work-box fadeInUp animated"><h2 class="uline-title text-center">以下是机器识别的结果</h2><div class="fh5co-spacer fh5co-spacer-sm"></div></div>');
+									var jsonresult = jQuery.parseJSON(result);
+									$.each(jsonresult,function(i,list){
+									    var divplant = "<div class='col-md-4 col-sm-6 col-xs-6 col-xxs-12 text-center fh5co-work-item work-box fadeInUp animated'>"
+					                                   + "<figure>"
+						                               + "<a onclick='showDetail(event)'>"
+						                               + "<img class='img-responsive' src='" + list.plant_image + "' "
+						                               + "plant_name='" + list.plant_name + "' "
+						                               + "other_name='" + list.other_name + "' "
+						                               + "formal_name='" + list.formal_name + "' "
+						                               + "plant_class='" + list.plant_class + "' "
+						                               + "plant_address='" + list.plant_address + "'" 
+						                               + "></a>"
+					                                   + "</figure>"
+					                                   + "<h3 class='heading'>"
+					                                   + list.plant_name
+					                                   + "</h3>"
+					                                   + "<p>可能性："
+					                                   + list.score
+					                                   + "</p>"
+				                                       + "</div>"
+			                           $('#resultarea').append(divplant);
+									})
+									$('#resultarea').append("<div style='margin-top:20px;'><a class='col-md-8 col-sm-12 col-md-offset-2 col-xs-12 btn btn-primary' onclick='showUpload()'>鉴别其它的植物</a></div></div>");
 									showResult();
 								}
 							});

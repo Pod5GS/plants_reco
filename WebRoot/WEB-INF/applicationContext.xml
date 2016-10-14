@@ -44,6 +44,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/plants_reco/domain/News.hbm.xml</value>
+				<value>com/plants_reco/domain/Plants.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -71,8 +72,15 @@
  		<property name="sessionFactory" ref="sessionFactory" />    <!-- 除了action类是自动装配，其他的类都需要显示的写出注入 -->
 	</bean>
     
+    <bean id="plantsDao" class="com.plants_reco.dao.impl.PlantsDaoImpl">
+	    <property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    
 	<bean id="helloWorldService" class="com.plants_reco.service.impl.HelloWorldServiceImpl">
 		<property name="newsDao" ref="newsDao" />
 	</bean>     <!-- action默认是自动装配的 -->
-
+	
+	<bean id="uploadService" class="com.plants_reco.service.impl.UploadServiceImpl">
+	    <property name="plantsDao" ref="plantsDao"></property>
+	</bean>     <!-- action默认是自动装配的 -->
 </beans>

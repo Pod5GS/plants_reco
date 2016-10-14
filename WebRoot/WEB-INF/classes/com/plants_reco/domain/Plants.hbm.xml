@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.plants_reco.domain">
+	<class name="Plants" table="plant">
+		<cache usage="read-write" /> <!-- 缓存 -->
+		<id name="id" column="plant_id" type="integer">
+			<generator class="identity" />
+		</id>
+		<property name="plant_name" column="plant_name"/>
+		<property name="other_name" column="other_name"/>
+		<property name="formal_name" column="formal_name"/>
+		<property name="plant_class" column="plant_class"/>
+		<property name="plant_address" column="plant_address"/>
+		<property name="plant_image" column="plant_image"/>
+	</class>
+</hibernate-mapping>

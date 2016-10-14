@@ -3,15 +3,19 @@ package com.plants_reco.action;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.List;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.plants_reco.service.IUploadService;
+import com.plants_reco.util.DivPlants;
 
 public class UploadAction {
 	String result;
+	List<DivPlants> plants;
 	File file;
 	String fileFileName;
-	
+	private IUploadService uploadService;
 	public File getFile() {
 		return file;
 	}
@@ -36,12 +40,23 @@ public class UploadAction {
 		this.fileFileName = fileFileName;
 	}
 	
+	public IUploadService getUploadService() {
+		return uploadService;
+	}
+
+	public void setUploadService(IUploadService uploadService) {
+		this.uploadService = uploadService;
+	}
+	
+	public List<DivPlants> getPlants() {
+		return plants;
+	}
+
+	public void setPlants(List<DivPlants> plants) {
+		this.plants = plants;
+	}
+
 	public String upload() {
-		if(file == null){
-			System.out.println("file is null!!");
-		}else{
-			System.out.println(file.toString());
-		}
 		String path = "uploadfiles/" + fileFileName;
 		String directory = ServletActionContext.getServletContext().getRealPath("/");
 		if(directory.charAt(directory.length() - 1) != '/'){
@@ -49,29 +64,8 @@ public class UploadAction {
 			directory.replace("\\", "/");
 		}
 		String absolutepath = directory + path;
-		System.out.println(absolutepath);
-		try {
-			File newfile = new File(absolutepath);
-			if (!newfile.getParentFile().exists())
-				newfile.getParentFile().mkdirs();
-			if (!newfile.exists())
-				newfile.createNewFile();
-			FileOutputStream fos = new FileOutputStream(newfile);
-			FileInputStream fis = new FileInputStream(file);
-			byte[] buffer = new byte[1024];
-			int len = 0;
-			while ((len = fis.read(buffer)) != -1) {
-				fos.write(buffer, 0, len);
-			}
-			fos.close();
-			fis.close();
-			result = "success";
-			return result;
-		} catch (Exception e) {
-			e.printStackTrace();
-			result = "fail";
-			return result;
-		}
+		plants = uploadService.upload_reco(absolutepath, file);
+		return "success";
 	}
 	
 }
